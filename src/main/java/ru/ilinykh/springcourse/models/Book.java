@@ -2,24 +2,27 @@ package ru.ilinykh.springcourse.models;
 
 
 public class Book {
-    private int id;
+    private int bookId;
     private String title;
     private String author;
     private int yearOfProduction;
 
+    public Book() {
+    }
+
     public Book(int id, String title, String author, int yearOfProduction) {
-        this.id = id;
+        this.bookId = id;
         this.title = title;
         this.author = author;
         this.yearOfProduction = yearOfProduction;
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
