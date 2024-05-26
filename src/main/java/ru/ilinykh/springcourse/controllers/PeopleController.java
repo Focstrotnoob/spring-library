@@ -27,6 +27,7 @@ public class PeopleController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDao.show(id));
+        model.addAttribute("books", personDao.getBooksByPersonId(id));
         return "people/show";
     }
 
@@ -59,6 +60,8 @@ public class PeopleController {
         personDao.delete(id);
         return "redirect:/people";
     }
+
+
 
 
 }

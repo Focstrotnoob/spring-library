@@ -3,6 +3,7 @@ package ru.ilinykh.springcourse.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import ru.ilinykh.springcourse.models.Book;
 import ru.ilinykh.springcourse.models.Person;
 
 import java.util.List;
@@ -34,7 +35,11 @@ public class PersonDao {
         jdbcTemplate.update("INSERT INTO person(full_name, age) values (?, ?)", person.getFullName(), person.getAge());
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         jdbcTemplate.update("DELETE FROM person WHERE person_id=?", id);
+    }
+
+    public List<Book> getBooksByPersonId(int id){
+        return jdbcTemplate.query("SELECT * FROM book WHERE person_id=?", new Object[]{id}, new BookMapper());
     }
 }
