@@ -1,15 +1,22 @@
 package ru.ilinykh.springcourse.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Person {
     private int personId;
+    @NotEmpty(message = "Fullname should no be empty")
+    @Size(min = 2, max = 60, message = "Fullname should be between 2 and 60 character")
     private String fullName;
+
+    @Min(value = 10, message = "The age must be more than 10")
     private int age;
 
     public Person() {
     }
 
-    public Person(int id, String fullName, int age) {
-        this.personId = id;
+    public Person(String fullName, int age) {
         this.fullName = fullName;
         this.age = age;
     }

@@ -7,6 +7,7 @@ import ru.ilinykh.springcourse.models.Book;
 import ru.ilinykh.springcourse.models.Person;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDao {
@@ -19,6 +20,11 @@ public class PersonDao {
 
     public List<Person> index() {
         return jdbcTemplate.query("SELECT * FROM person", new PersonMapper());
+    }
+
+    public Optional<Person> getPersonByFullName(String fullname){
+        return jdbcTemplate.query("SELECT * FROM Person WHERE full_name=?", new Object[]{fullname}, new PersonMapper()).stream()
+                .findAny();
     }
 
     public Person show(int id) {

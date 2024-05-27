@@ -30,7 +30,7 @@ public class BookDao {
 
     public void update(int id, Book updatedBook) {
         jdbcTemplate.update("UPDATE book SET title=?, author=?, year_of_production=? where book_id=?",
-                updatedBook.getTitle(), updatedBook.getAuthor(), updatedBook.getYearOfProduction(), updatedBook.getBookId());
+                updatedBook.getTitle(), updatedBook.getAuthor(), updatedBook.getYearOfProduction(), id);
     }
 
     public void save(Book book) {
